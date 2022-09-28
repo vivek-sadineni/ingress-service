@@ -1,0 +1,62 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sspl-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /logistic-nosql-dal
+            backend:
+              serviceName: logistic-nosql-dal-service
+              servicePort: 7005
+          - path: /fkh-api
+            backend:
+              serviceName: fkh-api-service
+              servicePort: 8103
+          - path: /lp-ff
+              backend:
+                serviceName: lp-ff-service
+                servicePort: 7001
+          - path: /lp-integration
+              backend:
+                serviceName: lp-integration-service
+                servicePort: 7002
+          - path: /fulfillment-rdb-dal
+              backend:
+                serviceName: fulfillment-rdb-dal-service
+                servicePort: 7021
+          - path: /logistic-push-receiver
+              backend:
+                serviceName: logistic-push-receiver-service
+                servicePort: 7003
+          - path: /logistic-rdb-dal
+              backend:
+                serviceName: logistic-rdb-dal-service
+                servicePort: 7004
+          - path: /prescription-exposed
+              backend:
+                serviceName: prescription-exposed-service
+                servicePort: 7023
+          - path: /prescription-internal
+              backend:
+                serviceName: prescription-internal-service
+                servicePort: 7022
+          - path: /util-ms
+              backend:
+                serviceName: util-ms-service
+                servicePort: 5015
+          - path: /sspl-catalog
+              backend:
+                serviceName: sspl-catalog-service
+                servicePort: 4005
+          - path: /sspl-search
+              backend:
+                serviceName: sspl-search-service
+                servicePort: 4000
+          - path: /sspl-secretmanager
+              backend:
+                serviceName: sspl-secretmanager-service
+                servicePort: 5020
